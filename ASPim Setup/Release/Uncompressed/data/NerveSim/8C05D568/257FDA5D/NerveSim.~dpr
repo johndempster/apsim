@@ -1,0 +1,18 @@
+program NerveSim;
+
+uses
+  Forms,
+  PrintUnit in 'PrintUnit.pas' {PrintFrm},
+  Shared in 'SHARED.PAS',
+  NerveSimMain in 'NerveSimMain.pas' {MainFrm};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.Title := 'Nerve Simulation';
+  Application.HelpFile := 'C:\Program Files\Borland\Delphi7\OBSim\OBSIM.HLP';
+  Application.CreateForm(TMainFrm, MainFrm);
+  Application.CreateForm(TPrintFrm, PrintFrm);
+  Application.Run;
+end.

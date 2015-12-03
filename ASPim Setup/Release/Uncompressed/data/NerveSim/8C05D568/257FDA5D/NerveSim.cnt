@@ -1,0 +1,8 @@
+:Base nervesim.hlp
+:Title Nerve Simulation
+1 Starting an Experiment=IDH_STARTINGANEXPERIMENT
+1 Stimulating the Nerve=IDH_StimulatingNerve
+1 Adding Drugs=IDH_Adding Drugs
+1 Changing the Salt Solution=IDH_ChangingSaltSolution
+1 Measuring the Nerve Membrane Potential=IDH_ MeasuringNerveMembranePotential
+1 Menu Options=IDH_MenuOptions

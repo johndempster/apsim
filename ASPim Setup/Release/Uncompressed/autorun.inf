@@ -1,0 +1,4 @@
+[AutoRun]
+icon=NerveSim.exe,0
+label=NerveSim
+open=NerveSim.exe
