@@ -2,8 +2,8 @@ object MainFrm: TMainFrm
   Left = 359
   Top = 16
   Caption = 
-    'Action Potential Simulation V1.0.4 (c) J. Dempster, University o' +
-    'f Strathclyde 2016 (8/2/16) '
+    'Action Potential Simulation V1.0.3 (c) J. Dempster, University o' +
+    'f Strathclyde 2015 (2/12/15) '
   ClientHeight = 631
   ClientWidth = 906
   Color = clBtnFace
@@ -619,7 +619,6 @@ object MainFrm: TMainFrm
             Scale = 1.000000000000000000
             Units = 's'
             NumberFormat = '%.4g'
-            LoLimit = -1.000000015047466E30
             HiLimit = 1.000000015047466E30
           end
           object bTDisplayDouble: TButton

@@ -669,6 +669,7 @@ procedure TMainFrm.TimerTimer(Sender: TObject);
 // Timed event scheduler
 // ---------------------
 var
+    NewPoint,V,dVdt : Single ;
     i,nStates : Integer ;
     States : Array[0..20] of Single ;
 begin

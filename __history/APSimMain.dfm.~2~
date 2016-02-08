@@ -2,8 +2,8 @@ object MainFrm: TMainFrm
   Left = 359
   Top = 16
   Caption = 
-    'Action Potential Simulation V1.0.4 (c) J. Dempster, University o' +
-    'f Strathclyde 2016 (8/2/16) '
+    'Action Potential Simulation V1.0.3 (c) J. Dempster, University o' +
+    'f Strathclyde 2015 (2/12/15) '
   ClientHeight = 631
   ClientWidth = 906
   Color = clBtnFace
@@ -835,6 +835,10 @@ object MainFrm: TMainFrm
       object ExperimentPage: TTabSheet
         Caption = 'Experimental Setup'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object ExptSetup: TImage
           Left = 8
           Top = 0

@@ -5,8 +5,6 @@ unit APSimMain;
 // -----------------------------------------------
 // V1.0.0
 // V1.0.
-// V1.0.4 8.02.16 Error bars in Edit->Copy Image now same as grid spacing.
-//                Large currents no longer exceed current display range
 
 interface
 
@@ -669,6 +667,7 @@ procedure TMainFrm.TimerTimer(Sender: TObject);
 // Timed event scheduler
 // ---------------------
 var
+    NewPoint,V,dVdt : Single ;
     i,nStates : Integer ;
     States : Array[0..20] of Single ;
 begin
@@ -1485,7 +1484,7 @@ begin
 
 procedure TMainFrm.mnCopyImageClick(Sender: TObject);
 var
-  ch: Integer;
+  i: Integer;
 // -----------------------------------------
 // Copy image of displayed trace to clipboad
 // -----------------------------------------
@@ -1494,9 +1493,12 @@ begin
      while scDisplay.TCalBar < (scDisplay.MaxPoints*0.1) do begin
          scDisplay.TCalBar := scDisplay.TCalBar*10.0 ;
          end;
-     for ch := 0 to scDisplay.NumChannels-1 do
-         scDisplay.ChanCalBar[ch] :=  scDisplay.ChanGridSpacing[ch] ;
-
+     scDisplay.ChanCalBar[0] := 10.0 ;
+     scDisplay.ChanCalBar[1] := 10.0 ;
+     scDisplay.ChanCalBar[2] := 500.0 ;
+     scDisplay.ChanCalBar[3] := 10.0 ;
+     scDisplay.ChanCalBar[4] := 10.0 ;
+     scDisplay.ChanCalBar[5] := 10.0 ;
      scDisplay.PrinterFontName := 'Arial' ;
      scDisplay.PrinterFontSize := 10 ;
      scDisplay.MetafileWidth := 1000 ;
