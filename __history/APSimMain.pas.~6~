@@ -7,7 +7,6 @@ unit APSimMain;
 // V1.0.
 // V1.0.4 8.02.16 Error bars in Edit->Copy Image now same as grid spacing.
 //                Large currents no longer exceed current display range
-// V1.0.5 22.02.16 Help file updated and copied to local folder for use.
 
 interface
 

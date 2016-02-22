@@ -7,7 +7,6 @@ unit APSimMain;
 // V1.0.
 // V1.0.4 8.02.16 Error bars in Edit->Copy Image now same as grid spacing.
 //                Large currents no longer exceed current display range
-// V1.0.5 22.02.16 Help file updated and copied to local folder for use.
 
 interface
 
@@ -288,21 +287,20 @@ procedure TMainFrm.FormShow(Sender: TObject);
 // ------------------------------------------------
 var
     FileName : String ;
+   TempPath : Array[0..255] of Char ;
    LocalHelpFile : string ;
-   HelpFileName,LocalHelpFilePath : string ;
-   TempPath : Array[0..511] of WideChar ;
    ch : Integer ;
 begin
 
      // Find help file
 
-     // Find help file
-     HelpFileName := 'apsim.chm' ;
-     Application.HelpFile := ExtractFilePath(ParamStr(0)) + HelpFileName ;
-     GetTempPath( 512, TempPath ) ;
-     LocalHelpFilePath := String(TempPath) + HelpFileName ;
-     CopyFile( PCHar(Application.HelpFile),PCHar(LocalHelpFilePath),  false ) ;
-     if FileExists(LocalHelpFilePath) then Application.HelpFile := LocalHelpFilePath ;
+     // Copy help file to temp folder
+     GetTempPath( High(TempPath), TempPath ) ;
+     LocalHelpFile := String(TempPath) + 'nervesim.chm' ;
+     CopyFile( Pchar(ExtractFilePath(ParamStr(0)) + 'nervesim.chm'),
+               Pchar(LocalHelpFile),
+               false ) ;
+     Application.HelpFile := LocalHelpFile ;
 
      // Create annotation list
      MarkerList := TStringList.Create ;
@@ -1356,24 +1354,13 @@ procedure TMainFrm.mnPrintClick(Sender: TObject);
 // ---------------------------
 // Print displayed chart trace
 // ---------------------------
-var
-    ch : Integer ;
 begin
     scDisplay.PrinterLeftMargin := 25 ;
     scDisplay.PrinterRightMargin := 25 ;
     scDisplay.PrinterTopMargin := 25 ;
     scDisplay.PrinterBottomMargin := 25 ;
-
-    // Time cal. bar
-    scDisplay.TCalBar := 0.01/scDisplay.TScale ;
-    while scDisplay.TCalBar < (scDisplay.MaxPoints*0.1) do begin
-          scDisplay.TCalBar := scDisplay.TCalBar*10.0 ;
-          end;
-
-    // Channel calibration bars
-    for ch := 0 to scDisplay.NumChannels-1 do
-        scDisplay.ChanCalBar[ch] :=  scDisplay.ChanGridSpacing[ch] ;
-
+    scDisplay.TCalBar := 1.0 / scDisplay.TScale ;
+    scDisplay.ChanCalBar[0] := 10.0 ;
     scDisplay.Print ;
     end;
 
@@ -1655,9 +1642,28 @@ procedure TMainFrm.mnContentsClick(Sender: TObject);
 // -----------------------
 //  Help/Contents menu item
 //  -----------------------
+//begin
+//     application.HelpCommand( 10 ) ;
+// -----------------------
+//  Help/Contents menu item
+//  -----------------------
+var
+   pWinDir : PChar ;
+   FileName : String ;
 begin
-     ShellExecute(Handle,'open', 'c:\windows\hh.exe',PChar(Application.HelpFile),
-     nil, SW_SHOWNORMAL) ;
+
+
+     GetMem( pWinDir, 512 ) ;
+     GetWindowsDirectoryW( pWinDir, 256 ) ;
+     FileName := pWinDir + '\hh.exe' ;
+
+     ShellExecute( Handle,PChar('open'),
+                   PChar(FileName),
+                   PChar(Application.HelpFile),
+                   nil,
+                   SW_SHOWNORMAL) ;
+     FreeMem( pWinDir ) ;
+
      end;
 
 

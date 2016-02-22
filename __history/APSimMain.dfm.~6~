@@ -501,7 +501,7 @@ object MainFrm: TMainFrm
       Top = 16
       Width = 585
       Height = 545
-      ActivePage = ChartPage
+      ActivePage = ExperimentPage
       TabOrder = 0
       object ChartPage: TTabSheet
         Caption = 'Chart'
